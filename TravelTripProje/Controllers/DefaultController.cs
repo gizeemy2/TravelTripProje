@@ -21,5 +21,10 @@ namespace TravelTripProje.Controllers
         {
             return View();
         }
+        public PartialViewResult Partial1()
+        {
+            var degerler = c.Blogs.OrderByDescending(x => x.Id).Take(2).ToList();
+            return PartialView(degerler);
+        }
     }
 }
