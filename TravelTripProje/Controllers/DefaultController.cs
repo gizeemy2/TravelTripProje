@@ -13,7 +13,7 @@ namespace TravelTripProje.Controllers
         DbCtx c = new DbCtx();
         public ActionResult Index()
         {
-            var degerler = c.Blogs.ToList();
+            var degerler = c.Blogs.Take(8).ToList();
             return View(degerler);
      
         }
@@ -25,6 +25,28 @@ namespace TravelTripProje.Controllers
         {
             var degerler = c.Blogs.OrderByDescending(x => x.Id).Take(2).ToList();
             return PartialView(degerler);
+        }
+        public PartialViewResult Partial2()
+        {
+            var deger=c.Blogs.Where(x => x.Id == 1).ToList();
+            return PartialView(deger);
+        }
+        public PartialViewResult Partial3()
+        {
+            var deger = c.Blogs.Take(10).ToList();
+            return PartialView(deger);
+        }
+        public PartialViewResult Partial4()
+        {
+            var deger = c.Blogs.Take(3).ToList();
+            return PartialView(deger);
+        
+        }
+        public PartialViewResult Partial5()
+        {
+            var deger = c.Blogs.Take(3).OrderByDescending(x=>x.Id).ToList();
+            return PartialView(deger);
+
         }
     }
 }
