@@ -29,5 +29,23 @@ namespace TravelTripProje.Controllers
             by.Value2 = c.Commentss.Where(x => x.Blogid == id).ToList();
             return View(by);
         }
+        [HttpGet]
+
+        public PartialViewResult DoComment(int id)
+        {
+            ViewBag.deger = id;
+            return PartialView();
+        }
+
+
+
+        [HttpPost]
+        public PartialViewResult DoComment(Comments y)
+        {
+            c.Commentss.Add(y);
+            c.SaveChanges();
+            return PartialView();
+
+        }
     }
 }
